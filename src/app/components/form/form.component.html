@@ -1,0 +1,19 @@
+<form class="flex flex-col space-y-4 items-center justify-center w-[500px] h-[100%]" (ngSubmit)="onSubmit()">
+    <!-- <div >
+        <select (change)="onChange($any($event.target).value)" name="selected" id="selected" [(ngModel)]="selected">
+            <option *ngFor="let dealer of dealers" value="{{dealer.id}}">{{dealer.name}}</option>
+        </select>
+    </div> -->
+    <input type="submit" class="rounded-full px-3 py-1 border-[1px] bg-green-400 cursor-pointer text-black" value="Shuffle">
+    <div class="flex rounded-xl flex-col items-center  justify-center bg-white/90 h-[500px] w-full pt-10 overflow-y-auto scrollbar-track-slate-300/20 scrollbar-thumb-[#e96d5dcb] scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg scrollbar-thin">
+        <div class="flex flex-row items-center justify-evenly w-full mt-4" *ngFor="let card of deck" >
+            <p class="uppercase text-center font-semibold w-full flex-1">
+                {{card.suit}}
+            </p>
+            <p class="text-orange-700 text-center font-bold animate-pulse flex-1">
+                {{card.rank}}
+            </p>
+        </div>
+
+    </div>
+</form>
