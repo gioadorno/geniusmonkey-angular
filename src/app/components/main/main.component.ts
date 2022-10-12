@@ -15,4 +15,6 @@ export class MainComponent implements OnInit {
     this.dealerService.getDealers().subscribe(dealers => this.dealers = dealers)
   }
 
+
+
 }

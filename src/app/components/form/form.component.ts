@@ -10,20 +10,20 @@ import {Observable} from 'rxjs';
 })
 export class FormComponent implements OnInit {
   @Input() dealer!: Dealer;
-  @Input() id!: string;
+  // @Input() id!: string;
   @Output() getDeck: EventEmitter<Deck> = new EventEmitter();
 
   public deck!: Deck[];
 
   dealers: Dealer[] = [];
   shuffle: string = 'shuffle';
-  selected!: string
+  id!: string;
 
 
   constructor(private dealerService: DealerService) { }
 
   ngOnInit(): void {
-    this.dealerService.getDealers().subscribe(dealers => this.dealers = dealers)
+
   }
 
   onChange(dealer: Dealer) {
@@ -32,10 +32,12 @@ export class FormComponent implements OnInit {
     // this.changeID.emit(dealer)
   }
 
+
   onSubmit() {
-      this.dealerService.getDeck().subscribe(deck => {
-        console.log(deck)
-        this.deck = deck
+      this.dealerService.getDealers().subscribe(dealers => {
+        this.dealers = dealers;
+        const dealer = dealers[0];
+        this.dealerService.getDeck(dealer).subscribe(deck => this.deck = deck);
       })
   }
 

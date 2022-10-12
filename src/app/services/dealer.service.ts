@@ -25,8 +25,8 @@ export class DealerService {
     return this.http.get<Dealer[]>(this.apiUrl, httpOptions);
   }
 
-  getDeck(): Observable<Deck[]> {
-    const url = `${this.apiUrl}8eca01b9-3b81-11ed-812e-00be4349ca1c/shuffle/`
+  getDeck(dealer: Dealer): Observable<Deck[]> {
+    const url = `${this.apiUrl}${dealer.id}/shuffle/`
     return this.http.put<Deck[]>(url, httpOptions);
   }
 }
